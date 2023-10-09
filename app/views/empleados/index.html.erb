@@ -1,0 +1,32 @@
+<h1>Listado de Empleados</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Teléfono</th>
+      <th>Departamento</th>
+      <th>Dirección</th>
+      <th>Activo</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @empleados.each do |empleado| %>
+      <tr>
+        <td><%= empleado.id %></td>
+        <td><%= empleado.name %></td>
+        <td><%= empleado.phone %></td>
+        <td><%= empleado.departamento.name_dept %></td>
+        <td><%= empleado.direccion %></td>
+        <td><%= empleado.isactive ? 'Sí' : 'No' %></td>
+        <td>
+          <%= link_to 'Ver', empleado %>
+          <%= link_to 'Editar', edit_empleado_path(empleado) %>
+          <%= link_to 'Eliminar', empleado, method: :delete, data: { confirm: '¿Estás seguro?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo Empleado', new_empleado_path %>

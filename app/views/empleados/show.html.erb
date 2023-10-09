@@ -1,0 +1,9 @@
+<h1>Detalles del Empleado</h1>
+<p><strong>ID:</strong> <%= @empleado.id %></p>
+<p><strong>Nombre:</strong> <%= @empleado.name %></p>
+<p><strong>Teléfono:</strong> <%= @empleado.phone %></p>
+<p><strong>Departamento:</strong> <%= @empleado.departamento.name_dept %></p>
+<p><strong>Dirección:</strong> <%= @empleado.direccion %></p>
+<p><strong>Activo:</strong> <%= @empleado.isactive ? 'Sí' : 'No' %></p>
+<%= link_to 'Editar', edit_empleado_path(@empleado) %> |
+<%= link_to 'Volver', empleados_path %>
