@@ -1,21 +1,23 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: PostgreSQL15
+  username: postgres
   password: 1234
   host: localhost
+  database: Northwind
   pool: 5
+
 
 development:
   <<: *default
-  database: crudruby
+  database: Northwind  # Cambia el nombre de la base de datos a "northwind"
 
 test:
   <<: *default
-  database: crudruby
+  database: Northwind  # Cambia el nombre de la base de datos a "northwind"
 
 production:
   <<: *default
-  database: crudruby
-  username: PostgreSQL15
+  database: Northwind  # Cambia el nombre de la base de datos a "northwind"
+  username: postgres
   password: 1234

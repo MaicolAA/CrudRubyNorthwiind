@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  get 'empleados/index'
-  get 'empleados/new'
-  get 'empleados/create'
-  get 'empleados/edit'
-  get 'empleados/update'
-  get 'empleados/show'
-  get 'empleados/destroy'
+   # config/routes.rb
+
+  # Otras rutas...
+
+  # Ruta para el controlador Employees y su acción index
+  get '/employees', to: 'employees#index'
+
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
