@@ -1,56 +1,84 @@
-<h1>Employees#index</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
 <!DOCTYPE html>
 <html>
 <head>
   <title>Listado de Empleados</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-  <h1>Listado de Empleados</h1>
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Apellido</th>
-      <th>Nombre</th>
-      <th>Título</th>
-      <th>Cortesía</th>
-      <th>Fecha de Nacimiento</th>
-      <th>Fecha de Contratación</th>
-      <th>Dirección</th>
-      <th>Ciudad</th>
-      <th>Región</th>
-      <th>Código Postal</th>
-      <th>País</th>
-      <th>Teléfono</th>
-      <th>Extensión</th>
-      <th>Foto</th>
-      <th>Notas</th>
-      <th>Reporta a</th>
-      <th>Ruta de Foto</th>
-    </tr>
-    <% @employees.each do |employee| %>
-      <tr>
-        <td><%= employee['employee_id'] %></td>
-        <td><%= employee['last_name'] %></td>
-        <td><%= employee['first_name'] %></td>
-        <td><%= employee['title'] %></td>
-        <td><%= employee['title_of_courtesy'] %></td>
-        <td><%= employee['birth_date'] %></td>
-        <td><%= employee['hire_date'] %></td>
-        <td><%= employee['address'] %></td>
-        <td><%= employee['city'] %></td>
-        <td><%= employee['region'] %></td>
-        <td><%= employee['postal_code'] %></td>
-        <td><%= employee['country'] %></td>
-        <td><%= employee['home_phone'] %></td>
-        <td><%= employee['extension'] %></td>
-        <td><%= employee['photo'] %></td>
-        <td><%= employee['notes'] %></td>
-        <td><%= employee['reports_to'] %></td>
-        <td><%= employee['photo_path'] %></td>
-      </tr>
-    <% end %>
-  </table>
+  <div class="container">
+    <h1>Listado de Empleados</h1>
+    <p>Lista de Empleados Northwind</p>
+  </div>
+  <div class="container-fluid">
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>Title</th>
+          <th>Courtesy</th>
+          <th>Birth Date</th>
+          <th>Hire Date</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Region</th>
+          <th>Zip Code</th>
+          <th>Country</th>
+          <th>Phone</th>
+          <th>Extension</th>
+          <th>Photo</th>
+          <th>Notes</th>
+          <th>Reports To</th>
+          <th>Photo Path</th>
+          <th>Acciones</th> <!-- Nueva columna para botones -->
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee['employee_id'] %></td>
+            <td><%= employee['last_name'] %></td>
+            <td><%= employee['first_name'] %></td>
+            <td><%= employee['title'] %></td>
+            <td><%= employee['title_of_courtesy'] %></td>
+            <td><%= employee['birth_date'] %></td>
+            <td><%= employee['hire_date'] %></td>
+            <td><%= employee['address'] %></td>
+            <td><%= employee['city'] %></td>
+            <td><%= employee['region'] %></td>
+            <td><%= employee['postal_code'] %></td>
+            <td><%= employee['country'] %></td>
+            <td><%= employee['home_phone'] %></td>
+            <td><%= employee['extension'] %></td>
+            <td><%= employee['photo'] %></td>
+            <td><%= employee['notes'] %></td>
+            <td><%= employee['reports_to'] %></td>
+            <td><%= employee['photo_path'] %></td>
+            <td>
+              <!-- Botones para editar y eliminar un empleado -->
+              <a href="<%= edit_employee_path(employee['employee_id']) %>" class="btn btn-primary">Editar</a>
+              <td>
+                  <%= form_for employee, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar este empleado?' } do |f| %>
+                  <%= f.submit 'Eliminar', class: 'btn btn-danger' %>
+                  <% end %>
+              </td>
+
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="container">
+    <a href="<%= new_employee_path %>" class="btn btn-success">Crear Nuevo Empleado</a>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-

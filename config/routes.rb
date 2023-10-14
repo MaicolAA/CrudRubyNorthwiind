@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
 
-  resources :empleados
+  resources :employees
 
 end
