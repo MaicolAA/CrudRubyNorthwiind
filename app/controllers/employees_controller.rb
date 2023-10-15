@@ -25,12 +25,12 @@ class EmployeesController < ApplicationController
 
   def destroy
     employee_id = params[:id]
-    ActiveRecord::Base.connection.execute("SELECT delete_employee(#{employee_id})")
+    ActiveRecord::Base.connection.execute("CALL delete_employee(#{employee_id})")
     redirect_to employees_path, notice: 'Empleado eliminado exitosamente.'
   end
   
   def create
-    # Parámetros para el procedimiento almacenado
+
     employee_id = params[:employee][:employee_id]
     last_name = params[:employee][:last_name]
     first_name = params[:employee][:first_name]
@@ -49,7 +49,7 @@ class EmployeesController < ApplicationController
     reports_to = params[:employee][:reports_to]
     photo_path = params[:employee][:photo_path]
 
-    # Llamada al procedimiento almacenado
+
     ActiveRecord::Base.connection.execute("SELECT create_employee(
       #{employee_id}::smallint,
       '#{last_name}',
@@ -71,16 +71,11 @@ class EmployeesController < ApplicationController
       '#{photo_path}'
     )")
 
-    # Redirige a la página de empleados o donde desees después de crear
     redirect_to employees_path, notice: 'Empleado creado exitosamente.'
   end
 
   
-
-
-
-
   
-    
-
+  
+  
 end
