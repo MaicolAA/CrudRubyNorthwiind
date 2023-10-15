@@ -6,6 +6,7 @@ begin
 end;
 $$ language plpgsql;
 
+
 SELECT * FROM getAllEmployes()
 
 drop function  getAllEmployes()
@@ -205,3 +206,69 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+
+
+
+SELECT update_employee(
+  20::smallint, 
+  'carlos', 
+  'slim', 
+  'paatron', 
+  'dr', 
+  '1990-01-01'::DATE,
+  '2023-10-15'::DATE, 
+  'cr 22',
+  'NuevaCiudad', 
+  'NuevaRegión',
+  '25645', 
+  'NuevoPaís', 
+  '300', 
+  '10', 
+  NULL, 
+  'NuevasNotas', 
+  NULL, 
+  'NuevaRutaDeFoto' 
+);
+
+
+---------get order by employeid
+
+CREATE OR REPLACE FUNCTION get_orders_by_employee_id(employee_id smallint)
+RETURNS TABLE (
+    order_id integer,
+    customer_id character varying,
+    order_date date,
+    required_date date,
+    shipped_date date,
+    ship_via smallint,
+    freight real,
+    ship_name character varying,
+    ship_address character varying,
+    ship_city character varying,
+    ship_region character varying,
+    ship_postal_code character varying,
+    ship_country character varying
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        o.order_id,
+        o.customer_id,
+        o.order_date,
+        o.required_date,
+        o.shipped_date,
+        o.ship_via,
+        o.freight,
+        o.ship_name,
+        o.ship_address,
+        o.ship_city,
+        o.ship_region,
+        o.ship_postal_code,
+        o.ship_country
+    FROM
+        orders o
+    WHERE
+        o.employee_id = employee_id;
+END;
+$$ LANGUAGE plpgsql;

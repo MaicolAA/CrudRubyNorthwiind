@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Listado de Órdenes</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Listado de Órdenes</h1>
+    <p>Lista de Órdenes</p>
+  </div>
+  <div class="container-fluid">
+    <%= form_tag(order_search_index_path, method: :get) do %>
+      <div class="form-group">
+        <%= select_tag :employee_id, options_from_collection_for_select(@employees, 'employee_id', 'full_name', params[:employee_id]), include_blank: 'Seleccione un empleado' %>
+        <%= submit_tag 'Buscar' %>
+      </div>
+    <% end %>
+    <% if @employee.present? %>
+      <h2>Órdenes de <%= @employee.full_name %></h2>
+      <p>Órdenes despachadas: <%= @orders.count %></p>
+      <p>[Id | Name]: [<%= @employee.employee_id %> | <%= @employee.full_name %>]</p>
+      <p>Dirección: <%= @employee.address %></p>
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>ID de Orden</th>
+            <th>Cliente ID</th>
+            <th>Fecha de Orden</th>
+            <th>Fecha Requerida</th>
+            <th>Fecha de Envío</th>
+            <th>Transportista</th>
+            <th>Flete</th>
+            <th>Nombre de Envío</th>
+            <th>Dirección de Envío</th>
+            <th>Ciudad de Envío</th>
+            <th>Región de Envío</th>
+            <th>Código Postal de Envío</th>
+            <th>País de Envío</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order['order_id'] %></td>
+              <td><%= order['customer_id'] %></td>
+              <td><%= order['order_date'] %></td>
+              <td><%= order['required_date'] %></td>
+              <td><%= order['shipped_date'] %></td>
+              <td><%= order['ship_via'] %></td>
+              <td><%= order['freight'] %></td>
+              <td><%= order['ship_name'] %></td>
+              <td><%= order['ship_address'] %></td>
+              <td><%= order['ship_city'] %></td>
+              <td><%= order['ship_region'] %></td>
+              <td><%= order['ship_postal_code'] %></td>
+              <td><%= order['ship_country'] %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
