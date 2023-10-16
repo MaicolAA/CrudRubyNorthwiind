@@ -250,5 +250,33 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+**obetner productos caros**
+
+CREATE OR REPLACE FUNCTION ObtenerProductosCaros()
+RETURNS TABLE (
+    ProductName character varying,
+    UnitPrice real
+) AS $$
+BEGIN
+    RETURN QUERY
+    WITH ProductosCaros AS (
+        SELECT
+            P.product_name,
+            P.unit_price
+        FROM
+            products AS P
+        WHERE
+            P.unit_price > (select avg(unit_price) from products)
+    )
+    SELECT
+        product_name,
+        unit_price
+    FROM
+        ProductosCaros;
+END;
+$$ LANGUAGE plpgsql;
+
+
 
 postgres SQL / plsql;
+
