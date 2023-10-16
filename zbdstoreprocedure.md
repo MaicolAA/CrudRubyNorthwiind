@@ -1,3 +1,5 @@
+Store procedure for READ | SHOW  Employes from the DATABASE
+
 create function getAllEmployes()
 returns table(employee_id smallint, last_name VARCHAR, first_name VARCHAR, title varchar, title_of_courtesy VARCHAR, birth_date date, hire_date date, address varchar, city varchar, region varchar, postal_code varchar, country varchar, home_phone varchar, extension varchar, photo bytea, notes text, reports_to smallint, photo_path varchar)
 as $$
@@ -7,46 +9,14 @@ end;
 $$ language plpgsql;
 
 
-SELECT * FROM getAllEmployes()
-
-drop function  getAllEmployes()
 
 
 
 
-select * from employees
-
-store procedure for delete 
 
 
 
-create or replace function delete_employee(employee_id smallint)
-returns void as $$
-declare
-  territory_id integer;
-begin
-
-  select employee_id into territory_id
-  from employee_territories
-  where employee_id = employee_id;
-  
-
-  delete from employee_territories
-  where employee_id = employee_id;
-  
-
-  delete from employees
-  where employee_id = employee_id;
-end;
-$$ language plpgsql;
-
-
-
---crear emplorye
-
-
-
-
+Store procedure for create New Employes in the DATABASE
 
 CREATE OR REPLACE FUNCTION create_employee(
   employee_id smallint,
@@ -113,6 +83,8 @@ END;
 $$ LANGUAGE plpgsql;
 
 
+EXAMPLE ABOUT ONE INSERCION 
+
 SELECT create_employee(
   20::smallint,
   'Arroyave',
@@ -136,8 +108,8 @@ SELECT create_employee(
 
 
 
---- eliminar
 
+Store procedure for DELETE Employes in the DATABASE
 
 create or replace procedure delete_employee(employee_id_arg int)
 language plpgsql
@@ -154,11 +126,14 @@ delete from employees where employee_id = employee_id_arg;
 end;
 $$;
 
+EXAMPLE DELETE
+
 Call delete_employee(20);
 
 
 
-----update
+
+Store procedure for UPDATE Employes in the DATABASE
 
 
 CREATE OR REPLACE FUNCTION update_employee(
@@ -209,6 +184,7 @@ $$ LANGUAGE plpgsql;
 
 
 
+EXAMPLE FOR UPDATE Employes in the DATABASE With the store Procedure | Fucntion
 SELECT update_employee(
   20::smallint, 
   'carlos', 
@@ -231,7 +207,8 @@ SELECT update_employee(
 );
 
 
----------get order by employeid
+
+Store procedure for get orders Create from one employee in the DATABASE
 
 CREATE OR REPLACE FUNCTION get_orders_by_employee_id(employee_id smallint)
 RETURNS TABLE (
@@ -272,3 +249,6 @@ BEGIN
         o.employee_id = employee_id;
 END;
 $$ LANGUAGE plpgsql;
+
+
+postgres SQL / plsql;

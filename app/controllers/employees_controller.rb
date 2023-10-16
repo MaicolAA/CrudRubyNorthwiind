@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  
   def mostrar
     result = ActiveRecord::Base.connection.select_all("SELECT * FROM getAllEmployes()")
     @employees = result.to_a

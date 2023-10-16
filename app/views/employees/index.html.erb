@@ -59,7 +59,7 @@
             <td>
               <!-- Botones para editar y eliminar un empleado -->
               <a href="<%= edit_employee_path(employee['employee_id']) %>" class="btn btn-primary">Editar</a>
-              <td>
+            <td>
                   <%= form_for employee, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar este empleado?' } do |f| %>
                   <%= f.submit 'Eliminar', class: 'btn btn-danger' %>
                   <% end %>

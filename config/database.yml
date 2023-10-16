@@ -10,7 +10,7 @@ default: &default
 
 development:
   <<: *default
-  database: Northwind  # Cambia el nombre de la base de datos a "northwind"
+  database: Northwind  
 
 test:
   <<: *default

@@ -28,6 +28,10 @@ resources :orders
 
 get 'order_search/index'
 
+get 'products/index', to: 'products#index'
+
+get 'products/productoscaros', to: 'products#productoscaros'
+
 
 
 end
