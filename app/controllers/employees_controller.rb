@@ -18,12 +18,13 @@ class EmployeesController < ApplicationController
 
   def new
     @employee = Employee.new
+    @employee.employee_id = generate_unique_employee_id
   end
 
   def destroy
     employee_id = params[:id]
     ActiveRecord::Base.connection.execute("CALL delete_employee(#{employee_id})")
-    redirect_to employees_path, notice: 'Empleado eliminado exitosamente.'
+    redirect_to employees_path, notice: 'Empleado eliminado exitosamente'
   end
   
   def create
@@ -62,7 +63,7 @@ class EmployeesController < ApplicationController
       '#{country}',
       '#{home_phone}',
       '#{extension}',
-      NULL::bytea, -- Photo (null si no se proporciona)
+      NULL::bytea, 
       '#{notes}',
       #{reports_to}::smallint,
       '#{photo_path}'
@@ -107,7 +108,7 @@ class EmployeesController < ApplicationController
       '#{country}',
       '#{home_phone}',
       '#{extension}',
-      NULL::bytea, -- Photo (null si no se proporciona)
+      NULL::bytea,
       '#{notes}',
       #{reports_to}::smallint,
       '#{photo_path}'
@@ -118,4 +119,15 @@ class EmployeesController < ApplicationController
 
   end
   
+end
+
+
+
+private
+
+def generate_unique_employee_id
+  loop do
+    random_id = rand(10..99) 
+    return random_id unless Employee.exists?(employee_id: random_id)
+  end
 end

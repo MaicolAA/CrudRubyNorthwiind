@@ -14,10 +14,10 @@ development:
 
 test:
   <<: *default
-  database: Northwind  # Cambia el nombre de la base de datos a "northwind"
+  database: Northwind  
 
 production:
   <<: *default
-  database: Northwind  # Cambia el nombre de la base de datos a "northwind"
+  database: Northwind  
   username: postgres
   password: 1234

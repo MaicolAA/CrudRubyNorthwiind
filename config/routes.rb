@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   get 'order_search/index'
-   # config/routes.rb
 
-  # Otras rutas...
 
-  # Ruta para el controlador Employees y su acción index
+
+ 
   get '/employees', to: 'employees#index'
 
 
@@ -20,18 +19,14 @@ Rails.application.routes.draw do
 
   resources :employees
 
-  # config/routes.rb
 
-resources :orders
-
-# config/routes.rb
-
-get 'order_search/index'
-
-get 'products/index', to: 'products#index'
-
-get 'products/productoscaros', to: 'products#productoscaros'
+  resources :orders
 
 
+  get 'order_search/index'
+
+  get 'products/index', to: 'products#index'
+
+  get 'products/productoscaros', to: 'products#productoscaros'
 
 end

@@ -31,7 +31,7 @@
           <th>Notes</th>
           <th>Reports To</th>
           <th>Photo Path</th>
-          <th>Acciones</th> <!-- Nueva columna para botones -->
+          <th>Acciones</th> 
         </tr>
       </thead>
       
@@ -57,15 +57,15 @@
             <td><%= employee['reports_to'] %></td>
             <td><%= employee['photo_path'] %></td>
             <td>
-              <!-- Botones para editar y eliminar un empleado -->
               <a href="<%= edit_employee_path(employee['employee_id']) %>" class="btn btn-primary">Editar</a>
-            <td>
-                  <%= form_for employee, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar este empleado?' } do |f| %>
-                  <%= f.submit 'Eliminar', class: 'btn btn-danger' %>
-                  <% end %>
-              </td>
-
             </td>
+            <td>
+                <%= form_for employee, method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar este empleado?' } do |f| %>
+                <%= f.submit 'Eliminar', class: 'btn btn-danger' %>
+                <% end %>
+            </td>
+
+            
           </tr>
         <% end %>
       </tbody>

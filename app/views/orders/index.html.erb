@@ -9,6 +9,7 @@
     <h1>Listado de Órdenes</h1>
     <p>Lista de Órdenes</p>
   </div>
+
   <div class="container-fluid">
     <table class="table table-bordered">
       <thead class="thead-light">
@@ -27,11 +28,12 @@
           <th>Región de Envío</th>
           <th>Código Postal de Envío</th>
           <th>País de Envío</th>
-          <!-- Agrega más encabezados según tus necesidades -->
+
         </tr>
       </thead>
       
       <tbody>
+
         <% @orders.each do |order| %>
           <tr>
             <td><%= order.order_id %></td>
@@ -48,7 +50,7 @@
             <td><%= order.ship_region %></td>
             <td><%= order.ship_postal_code %></td>
             <td><%= order.ship_country %></td>
-            <!-- Agrega más columnas según tus necesidades -->
+
           </tr>
         <% end %>
       </tbody>
