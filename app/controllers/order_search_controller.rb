@@ -10,5 +10,7 @@ class OrderSearchController < ApplicationController
     end
 
     @employees = Employee.all
+    @customers = Customer.all
+    
   end
 end

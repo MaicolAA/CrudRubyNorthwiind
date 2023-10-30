@@ -1,50 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Listado de Órdenes</title>
+  <title>Listado de Productos</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
   <div class="container">
-  <h1 class="text-center">Lista de Productos Northwind</h1>
-  <table class="table table-bordered">
-    <thead  class="thead-light">
-      <tr>
-        <th>ID</th>
-        <th>Nombre del Producto</th>
-        <th>ID del Proveedor</th>
-        <th>ID de la Categoría</th>
-        <th>Cantidad por Unidad</th>
-        <th>Precio por Unidad</th>
-        <th>Unidades en Stock</th>
-        <th>Unidades en Pedido</th>
-        <th>Nivel de Reorden</th>
-        <th>Descontinuado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @products.each do |product| %>
+    <h1 class="text-center">Lista de Productos Northwind</h1></br></br>
+
+    <%= link_to 'Añadir Nuevo Producto', new_product_path, class: 'btn btn-warning' %>
+    </br></br>
+
+    <table class="table table-bordered">
+      <thead class="thead-light">
         <tr>
-          <td><%= product.product_id %></td>
-          <td><%= product.product_name %></td>
-          <td><%= product.supplier_id %></td>
-          <td><%= product.category_id %></td>
-          <td><%= product.quantity_per_unit %></td>
-          <td><%= product.unit_price %></td>
-          <td><%= product.units_in_stock %></td>
-          <td><%= product.units_on_order %></td>
-          <td><%= product.reorder_level %></td>
-          <td><%= product.discontinued %></td>
+          <th>ID</th>
+          <th>Nombre del Producto</th>
+          <th>Nombre del Proveedor</th>
+          <th>Categoría</th>
+          <th>Cantidad por Unidad</th>
+          <th>Precio por Unidad</th>
+          <th>Unidades en Stock</th>
+          <th>Unidades en Pedido</th>
+          <th>Nivel de Reorden</th>
+          <th>Descontinuado</th>
+          <th>Acciones</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.product_id %></td>
+            <td><%= product.product_name %></td>
+            <td><%= @suppliers.find { |supplier| supplier.supplier_id == product.supplier_id }.company_name %></td>
+            <td><%= @categories.find { |category| category.category_id == product.category_id }.category_name %></td>
+            <td><%= product.quantity_per_unit %></td>
+            <td><%= product.unit_price %></td>
+            <td><%= product.units_in_stock %></td>
+            <td><%= product.units_on_order %></td>
+            <td><%= product.reorder_level %></td>
+            <td><%= product.discontinued == 1 ? "SI" : "No" %></td>
+
+
+            <td>
+              <a href="<%= edit_product_path(product) %>" class="btn btn-primary">Editar</a>
+            </td>
+
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
   </div>
 
-  
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
+
+
 </html>

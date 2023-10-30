@@ -1,0 +1,57 @@
+<%= form_with model: @product, local: true do |form| %>
+    <h1>Editar Producto</h1>
+  
+    <div class="form-group">
+      <%= form.label :product_id, 'ID del Producto' %>
+      <%= form.number_field :product_id, class: 'form-control', disabled: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :product_name, 'Nombre del Producto' %>
+      <%= form.text_field :product_name, class: 'form-control', required: true %>
+    </div>
+  
+    <%= form.label :supplier_id, 'Proveedor' %>
+    <%= form.select :supplier_id, options_for_select(@suppliers.map { |s| [s.company_name, s.supplier_id] }), {}, { class: 'form-control' } %>
+    
+      
+    <div class="form-group">
+    <%= form.label :category_id, 'Categoría' %>
+    <%= form.select :category_id, options_for_select(@categories.map { |c| [c.category_name, c.category_id] }), {}, { class: 'form-control' } %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :quantity_per_unit, 'Cantidad por Unidad' %>
+      <%= form.text_field :quantity_per_unit, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :unit_price, 'Precio por Unidad' %>
+      <%= form.number_field :unit_price, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :units_in_stock, 'Unidades en Stock' %>
+      <%= form.number_field :units_in_stock, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :units_on_order, 'Unidades en Pedido' %>
+      <%= form.number_field :units_on_order, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :reorder_level, 'Nivel de Reorden' %>
+      <%= form.number_field :reorder_level, class: 'form-control', required: true %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.label :discontinued, 'Descontinuado' %>&#160 &#160 &#160 &#160
+      <%= form.check_box :discontinued, class: 'form-check-input' %>
+    </div>
+  
+    <div class="form-group">
+      <%= form.submit 'Editar Producto', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  

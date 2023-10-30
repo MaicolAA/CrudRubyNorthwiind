@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'order_search/index'
+
+
 
 
 
@@ -28,5 +31,12 @@ Rails.application.routes.draw do
   get 'products/index', to: 'products#index'
 
   get 'products/productoscaros', to: 'products#productoscaros'
+
+
+  resources :products
+
+  get 'index', to: 'home#index'
+
+
 
 end

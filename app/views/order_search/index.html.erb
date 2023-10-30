@@ -31,7 +31,8 @@
         <thead class="thead-light">
           <tr>
             <th>ID de Orden</th>
-            <th>Cliente ID</th>
+            <th>Cliente</th>
+            <th>Empleado Encargado</th>
             <th>Fecha de Orden</th>
             <th>Fecha Requerida</th>
             <th>Fecha de Envío</th>
@@ -49,7 +50,8 @@
           <% @orders.each do |order| %>
             <tr>
               <td><%= order['order_id'] %></td>
-              <td><%= order['customer_id'] %></td>
+              <td><%= @customers.find { |customer| customer.customer_id == order['customer_id'] }.company_name %></td>
+              <td><%= @employee.full_name %></td>
               <td><%= order['order_date'] %></td>
               <td><%= order['required_date'] %></td>
               <td><%= order['shipped_date'] %></td>
