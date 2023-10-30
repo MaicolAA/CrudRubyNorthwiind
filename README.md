@@ -23,7 +23,7 @@ NORTHWIND :: es una base de datos con registros para una tienda de enceres.
 
 3. **Actualización de Datos:** Se ha implementado la capacidad de modificar datos de registros de empleados existentes.
 
-4. **Inserción de Nuevos Datos:** Además, he permitido la creación de nuevos registros para empleados.
+4. **Inserción de Nuevos Datos:** Además, he permitido la creación de nuevos registros para empleados, productos
 
 5. **busqueda personalizada** Se incorpora un modulo para la busqueda de las ordenes generadas por un empleado en especial.
 
