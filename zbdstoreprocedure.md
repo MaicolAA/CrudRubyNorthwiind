@@ -1,4 +1,4 @@
-Store procedure for READ | SHOW  Employes from the DATABASE
+store procedore for read every one employee
 
 create function getAllEmployes()
 returns table(employee_id smallint, last_name VARCHAR, first_name VARCHAR, title varchar, title_of_courtesy VARCHAR, birth_date date, hire_date date, address varchar, city varchar, region varchar, postal_code varchar, country varchar, home_phone varchar, extension varchar, photo bytea, notes text, reports_to smallint, photo_path varchar)
