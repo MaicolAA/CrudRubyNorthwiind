@@ -7,7 +7,7 @@
 * System dependencies
 postgres SQL
 
-Tarea de Bases de Datos II: Prueba de CRUD en Ruby on Rails para Órdenes, Empleados y productos 
+Materia Bases de Datos II: Prueba de CRUD en Ruby on Rails para Órdenes, Empleados y productos 
 
 En el contexto de la asignatura Bases de Datos II, se ha realizado un proyecto de prueba que utiliza Ruby on Rails para crear, leer, actualizar y eliminar (CRUD) registros de empleados y productos, ademas una visualizacion de ordenes segun algunos criterios en una base de datos existente NORTHWIND.
 
@@ -27,14 +27,14 @@ NORTHWIND :: es una base de datos con registros para una tienda de enceres.
 
 5. **busqueda personalizada** Se incorpora un modulo para la busqueda de las ordenes generadas por un empleado en especial.
 
-**Cosas a tener en cuenta:**
+**Tener en cuenta:**
 
 Es importante destacar que esta implementación es solo una prueba y no maneja todas las posibles situaciones de error.
 
 
 **Relevancia del Proyecto:**
 
-Este proyecto tiene relevancia para nuestra asignatura de Bases de Datos II, construido para porporcionar una práctica al CRUD en Ruby on Rails usando bases de datos creadas en postgresSQL.
+Este proyecto se desarrolló para asignatura de Bases de Datos II, construido para porporcionar una práctica al CRUD en Ruby on Rails usando bases de datos creadas en postgresSQL.
 
 
 
